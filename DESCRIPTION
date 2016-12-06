@@ -1,0 +1,23 @@
+Package: farsutil
+Type: Package
+Title: Practice Package Building
+Version: 0.1.0
+Depends: R (>= 2.10)
+Imports:
+    dplyr,
+    graphics,
+    maps,
+    magrittr,
+    readr,
+    tidyr
+Author: Richard Sedger
+Maintainer: Richard Sedger <richard.sedger@gmail.com>
+Description: Summarizes FARS data and maps fatalities by U.S. state.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
+Suggests: knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

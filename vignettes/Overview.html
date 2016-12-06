@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///tmp/RtmpAUMGAF/preview-2dfb2d77076f.dir/overview.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="generator" content="pandoc">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Richard Sedger">
+
+<meta name="date" content="2016-12-07">
+
+<title>Overview of farsutil Package</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="./Overview of farsutil Package_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div id="MathJax_Message" style="display: none;"></div>
+
+
+
+
+<h1 class="title toc-ignore">Overview of farsutil Package</h1>
+<h4 class="author"><em>Richard Sedger</em></h4>
+<h4 class="date"><em>2016-12-07</em></h4>
+
+
+
+<p><code>{opts_chunk$set(dev='CairoPDF') echo=FALSE}</code></p>
+<p>This is a simple package which provides functions to summarize data from the National Highway Traffic Safety Administration (NHTSA) Fatality Analysis Reporting System (FARS) for the years 2013 to 2015. The package was written for the final assignment of the “Building R Packages” course on Coursera, a part of the Johns Hopkins University “Mastering Software Development in R” specialization taught by Roger Peng (Bloomberg School of Public Health at Johns Hopkins University) and Brooke Anderson (Colorado State University).</p>
+<div id="the-data" class="section level2">
+<h2>The Data</h2>
+<p>The data in this package come from the National Highway Traffic Safety Administration (NHTSA) Fatality Analysis Reporting System (FARS). It contains the fatal vehicle crashes in the United States for each year. Each observation has as many as 52 features, but the functions in farsutil are concerned only with summarising the total numbers of fatalities by month and State.</p>
+<p>Detailed information about the data as a whole can be found in the NHTSA FARS user manuals and documentaion. Please refer to <a href="https://crashstats.nhtsa.dot.gov/#/DocumentTypeList/4" class="uri">https://crashstats.nhtsa.dot.gov/#/DocumentTypeList/4</a></p>
+</div>
+<div id="summarizing-the-fars-data-using-the-farsutil-package" class="section level2">
+<h2>Summarizing the FARS Data Using the farsutil Package</h2>
+<p>The <code>fars_summarize_years()</code> function takes either a single year, in integer form, or a vector of years, and produces a summary of the simple counts of fatalities by month and year:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fars_summarize_years</span>(<span class="kw">c</span>(<span class="dv">2013</span>,<span class="dv">2014</span>,<span class="dv">2015</span>))</code></pre></div>
+<pre><code>## # A tibble: 12 × 4
+##    MONTH `2013` `2014` `2015`
+## *  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;
+## 1      1   2230   2168   2368
+## 2      2   1952   1893   1968
+## 3      3   2356   2245   2385
+## 4      4   2300   2308   2430
+## 5      5   2532   2596   2847
+## 6      6   2692   2583   2765
+## 7      7   2660   2696   2998
+## 8      8   2899   2800   3016
+## 9      9   2741   2618   2865
+## 10    10   2768   2831   3019
+## 11    11   2615   2714   2724
+## 12    12   2457   2604   2781</code></pre>
+</div>
+<div id="mapping-fatal-crashes-by-u.s.-state" class="section level2">
+<h2>Mapping Fatal Crashes by U.S. State</h2>
+<p>Alternatively, you can use the <code>fars_map_state</code> function to produce a map of the fatalities in a particular state. This function takes a state ID number and a year. We need to load the maps package for this function.</p>
+<p>For a list of the state ID numbers, see page 26 of the <a href="https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812315#27">FARS Analytical User’s Guide (2015)</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maps)
+<span class="kw">fars_map_state</span>(<span class="dv">48</span>, <span class="dv">2014</span>)  <span class="co"># Texas</span></code></pre></div>
+<p><img src="data:image/png;base64,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"><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fars_map_state</span>(<span class="dv">6</span>, <span class="dv">2015</span>)   <span class="co"># California</span></code></pre></div>
+<p><img src="data:image/png;base64,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"><!-- --></p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+
+</body></html>
