@@ -13,6 +13,9 @@ install_github('rsedger/farsutil')
 library(farsutil)
 ```
 
-
-
-
+The data associated with this package may be accessed as follows:
+```R
+system.file("extdata", "accident_2013.csv.bz2", package = "farsutil")
+system.file("extdata", "accident_2014.csv.bz2", package = "farsutil")
+system.file("extdata", "accident_2014.csv.bz2", package = "farsutil")
+```
