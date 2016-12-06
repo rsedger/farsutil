@@ -17,5 +17,5 @@ library(farsutil)
 
 To get started, read the introduction vignette: `vignette('overview', package = 'farsutil')`.
 
-### Travis Badge
+
 
