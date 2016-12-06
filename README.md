@@ -13,9 +13,6 @@ install_github('rsedger/farsutil')
 library(farsutil)
 ```
 
-### Vignette
-
-To get started, read the introduction vignette: `vignette('overview', package = 'farsutil')`.
 
 
 
