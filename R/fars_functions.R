@@ -4,6 +4,7 @@
 #' @importFrom dplyr tbl_df
 #' @importFrom readr read_csv
 #' @return a data.frame
+#' @export
 fars_read <- function(filename) {
         if(!file.exists(filename))
                 stop("file '", filename, "' does not exist")
@@ -15,10 +16,11 @@ fars_read <- function(filename) {
 #' (Internal use only) make_filename Creates a filename with the correct structure for FARS data
 #' @param year A 4-digit year, e.g., 2015
 #' @return a string which represents a FARS data file name
+#' @export
 make_filename <- function(year) {
         year <- as.integer(year)
         filename <- sprintf("accident_%d.csv.bz2", year)
-        full_filename <- system.file('extdata', filename, package = 'farsdata')
+        full_filename <- system.file('extdata', filename, package = 'farsutil')
         full_filename
 }
 #' (Internal use only) fars_read_years extracts data by year
@@ -30,6 +32,7 @@ make_filename <- function(year) {
 #' @return This function returns a list of tibbles, where each tibble
 #'   contains the year and month from the observations in the corresponding
 #'   year's FARS data. If the year is not valid, the list will be NULL.
+#' @export
 fars_read_years <- function(years) {
         lapply(years, function(year) {
                 file <- make_filename(year)

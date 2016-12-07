@@ -32,7 +32,7 @@ Detailed information about the data as a whole can be found in the NHTSA FARS us
 The `fars_summarize_years()` function takes either a single year, in integer form, or a vector of years, and produces a summary of the simple counts of fatalities by month and year: 
 
 ```{r summarize_data}
-fars_summarize_years(c(2013,2014,2015))
+fars_summarize_years(2013:2014)
 ```
 
 

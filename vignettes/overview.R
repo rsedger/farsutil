@@ -5,7 +5,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE,warning = FALSE, dev='CairoP
 library(farsutil)
 
 ## ----summarize_data------------------------------------------------------
-fars_summarize_years(c(2013,2014,2015))
+fars_summarize_years(2013:2014)
 
 ## ----mapping_fatalities--------------------------------------------------
 require(maps)
