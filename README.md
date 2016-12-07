@@ -23,3 +23,10 @@ system.file("extdata", "accident_2014.csv.bz2", package = "farsutil")
 ### Vignette
 
 To get started, read the introduction vignette: `vignette('overview', package = 'farsutil')`.
+
+
+### Travis Badge
+
+[![Build Status](https://travis-ci.org/rsedger/farsutil.svg?branch=master)](https://travis-ci.org/rsedger/farsutil)
+
+
